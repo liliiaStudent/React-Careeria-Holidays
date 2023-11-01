@@ -1,6 +1,8 @@
 import './App.css'
 import React, {useState, useEffect} from 'react'
 import CustomerServices from './services/Customer'
+import Customer from './Customer'
+import CustomerAdd from './CustomerAdd'
 
 
 // Propsi otettu vastaan suoran nimellä
@@ -11,6 +13,7 @@ const CustomerList = () => {
       
 const [customers, setCustomers] = useState([])
 const [showCustomers, setShowCustomers] = useState(false)
+const [lisäystila, setLisäystila] = useState(false)
 
 
 useEffect( () => {
@@ -25,14 +28,21 @@ useEffect( () => {
 
     return (
     <>
+        <h1><nobr style={{ cursor: 'pointer' }}
+                onClick={() => setShowCustomers(!showCustomers)}>Customers</nobr>   
+
+                 {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h1>
+
+                 {lisäystila && <CustomerAdd setLisäystila={setLisäystila} 
+                 />}
+                
         
-        <h2 onClick={() => setShowCustomers(!showCustomers)}>Customers</h2>   
 
                  
          {
              showCustomers && customers && customers.map(c =>  (   
 
-                <h3 key={c.customerId}>{c.firstname} {c.lastname}</h3>
+                <Customer key={c.customerId} customer={c}/>
               
                 ) 
               

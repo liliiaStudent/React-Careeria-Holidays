@@ -2,6 +2,27 @@
   text-align: center;
 }
 
+.customerDetails {
+  background-color: rgb(250, 182, 231);
+  border-style: solid;
+  width: 50%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
+}
+
+.nappi {
+  border-radius: 10px;
+  margin-left: 10px;
+  font-size: 26px;
+  background-color: chocolate;
+  color: white;
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
