@@ -22,7 +22,7 @@ useEffect( () => {
         setCustomers(data)
 })
 
-},[]
+},[lisäystila]
 )
 
 

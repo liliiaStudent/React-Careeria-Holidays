@@ -3,9 +3,10 @@ import React, {useState} from 'react'
 import CustomerServices from './services/Customer'
 
 
+
 // Propsi otettu vastaan suoran nimellä
 
-const CustomerAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}) => {
+const CustomerAdd = ({setLisäystila}) => {
 
 //Komponentin tilan määritys
 
@@ -48,9 +49,8 @@ const handleSubmit = (event) => {
     CustomerServices.create(newCustomer)
     .then(response => {
       if (response.status === 200) {
-        setMessage("Added new Customer: " + newCustomer.firstname + " " + newCustomer.lastname)
-        setIsPositive(true)
-        setShowMessage(true)
+        alert("Added new Customer: " + newCustomer.firstname + " " + newCustomer.lastname)
+       
 
         setTimeout(() => {
           setLisäystila(false)
@@ -61,13 +61,11 @@ const handleSubmit = (event) => {
        
            })
     .catch(error => {
-      setMessage(error)
-      setIsPositive(false)
-      setShowMessage(true)
+      alert("Error")
+      
 
       setTimeout(() => {
-        setShowMessage(false)
-      }, 6000)
+              }, 6000)
       
 
      /* 
