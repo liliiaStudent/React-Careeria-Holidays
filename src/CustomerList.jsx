@@ -7,7 +7,7 @@ import CustomerAdd from './CustomerAdd'
 
 // Propsi otettu vastaan suoran nimellä
 
-const CustomerList = () => {
+const CustomerList = ({setIsPositive, setShowMessage, setMessage}) => {
 
     //Komponentin tilan määritys
       
@@ -22,7 +22,7 @@ useEffect( () => {
         setCustomers(data)
 })
 
-},[lisäystila]
+},[]
 )
 
 
@@ -34,6 +34,7 @@ useEffect( () => {
                  {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h1>
 
                  {lisäystila && <CustomerAdd setLisäystila={setLisäystila} 
+                 setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
                  />}
                 
         

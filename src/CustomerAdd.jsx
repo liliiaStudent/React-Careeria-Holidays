@@ -6,7 +6,7 @@ import CustomerServices from './services/Customer'
 
 // Propsi otettu vastaan suoran nimellä
 
-const CustomerAdd = ({setLisäystila}) => {
+const CustomerAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}) => {
 
 //Komponentin tilan määritys
 
@@ -49,7 +49,9 @@ const handleSubmit = (event) => {
     CustomerServices.create(newCustomer)
     .then(response => {
       if (response.status === 200) {
-        alert("Added new Customer: " + newCustomer.firstname + " " + newCustomer.lastname)
+        setMessage("Added new Customer: " + newCustomer.firstname + " " + newCustomer.lastname)
+        setIsPositive(true)
+        setShowMessage(true)
        
 
         setTimeout(() => {
@@ -61,10 +63,13 @@ const handleSubmit = (event) => {
        
            })
     .catch(error => {
-      alert("Error")
+        setMessage(error)
+        setIsPositive(false)
+        setShowMessage(true)
       
 
       setTimeout(() => {
+        setShowMessage(false)
               }, 6000)
       
 

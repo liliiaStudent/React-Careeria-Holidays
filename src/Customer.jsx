@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 
 // Props on nimeltään customer
 
-const Customer = ({customer, setIsPositive, setMessage, setShowMessage}) => {
+const Customer = ({customer}) => {
 
     //Komponentin tilan määritys
       
