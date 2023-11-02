@@ -12,4 +12,14 @@ const create = newCustomer => {
     return axios.post(baseUrl, newCustomer)
 }
 
-export default { getAll, create }
+const remove = id => {
+    
+    return axios.delete(`${baseUrl}/${id}`)
+}
+
+const update = (object) => {
+    
+    return axios.put(`${baseUrl}/${object.customerId}`, object)
+}
+
+export default { getAll, create, remove, update }

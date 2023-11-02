@@ -1,14 +1,68 @@
 import './App.css'
 import React, {useState} from 'react'
+import CustomerService from './services/Customer'
 
 // Props on nimeltään customer
 
-const Customer = ({customer}) => {
+const Customer = ({customer, editCustomer, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
 
     //Komponentin tilan määritys
       
 
 const [showDetails, setShowDetails] = useState(false)
+
+const deleteCustomer =(customer) => {
+    let vastaus = window.confirm(`Remove Customer ${customer.firstname} ${customer.lastname}`)
+
+    if (vastaus === true) { 
+    CustomerService.remove(customer.customerId)
+    .then(res => {
+        if (res.status === 200) {
+            setMessage(`Successfully removed customer ${customer.firstname} ${customer.lastaname}`)
+            setIsPositive(true)
+            setShowMessage(true)
+            window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
+
+           
+             // Ilmoituksen piilotus
+            setTimeout(() => {
+            setShowMessage(false)},
+            5000
+            )
+            reloadNow(!reload)
+            }
+            
+        
+    }
+        )
+        .catch(error => {
+            setMessage(error)
+            setIsPositive(false)
+            setShowMessage(true)
+            window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
+    
+            setTimeout(() => {
+              setShowMessage(false)
+             }, 6000)
+          })
+          
+
+        } // Jos poisto halutaankin perua
+        else {
+            setMessage('Poisto peruttu onnistuneesti.')
+            setIsPositive(true)
+            setShowMessage(true)
+            window.scrollBy(0, -10000) // Scrollataan ylös jotta nähdään alert :)
+    
+            // Ilmoituksen piilotus
+            setTimeout(() => {
+            setShowMessage(false)},
+            5000
+            )
+        }
+    }
+    
+    
 
     return (
     
@@ -19,6 +73,9 @@ const [showDetails, setShowDetails] = useState(false)
             </h4>      
 
           {showDetails && <div className='customerDetails'>
+            <h3> {customer.firstname} {customer.lastname}</h3>
+            <button className="nappi" onClick={() => deleteCustomer(customer)}>Delete</button>
+            <button className="nappi" onClick={() => editCustomer(customer)} >Edit</button>
             <table>
                 <thead>
                     <tr>
