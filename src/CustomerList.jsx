@@ -18,6 +18,7 @@ const [lisäystila, setLisäystila] = useState(false)
 const [muokkaustila, setMuokkaustila] = useState(false)
 const [reload, reloadNow] = useState(false)
 const [muokattavaCustomer, setMuokattavaCustomer] = useState(false)
+const [search, setSearch] = useState("")
 
 useEffect( () => {
     CustomerServices.getAll()
@@ -27,6 +28,13 @@ useEffect( () => {
 
 },[lisäystila, reload, muokkaustila]
 )
+//Hakukentän onChange tapahtumankäsittelijä
+const handleSearchInputChange = (event) => {
+    setShowCustomers(true)
+    setSearch(event.target.value.toLowerCase())
+}
+
+
 const editCustomer = (customer) => {
     setMuokattavaCustomer(customer)
     setMuokkaustila(true)
@@ -39,6 +47,11 @@ const editCustomer = (customer) => {
                 onClick={() => setShowCustomers(!showCustomers)}>Customers</nobr>   
 
                  {!lisäystila && <button className="nappi" onClick={() => setLisäystila(true)}>Add new</button>}</h1>
+
+                 {!lisäystila && !muokkaustila &&
+                <input placeholder="Search by firstname" value={search} onChange={handleSearchInputChange} />
+                }
+
 
                  {lisäystila && <CustomerAdd setLisäystila={setLisäystila} 
                  setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
@@ -53,15 +66,23 @@ const editCustomer = (customer) => {
 
                  
          {
-             showCustomers && customers && customers.map(c =>  (   
+             !lisäystila && !muokkaustila && showCustomers && customers && customers.map(c =>  
+                
+                {
+                    const lowerCaseName = c.firstname.toLowerCase()
+                    if (lowerCaseName.indexOf(search) > -1) {
+                        return(
+                  
 
                 <Customer key={c.customerId} customer={c} reloadNow={reloadNow} reload={reload}
                 setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
                 editCustomer={editCustomer}/>
               
                 ) 
-              
-                 )            
+                        }
+                    }
+                 )     
+                               
 
             
           }
