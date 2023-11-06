@@ -2,6 +2,8 @@ import logo from './logo.svg';
 import './App.css';
 import React, {useState} from 'react'
 import CustomerList from './CustomerList';
+import HolidayPropertyList from './HolidayPropertyList';
+import UserList from './UserList';
 import Message from './Message';
 
 import  Navbar  from 'react-bootstrap/Navbar'
@@ -21,7 +23,9 @@ function App() {
       <Router>
          <Navbar bg="dark" variant="dark">
             <Nav className="mr-auto">
+              <Link to={'/Users'} className='nav-link'>Users</Link> 
               <Link to={'/Customers'} className='nav-link'>Customers</Link>
+              <Link to={'/HolidayProperties'} className='nav-link'>Holiday Properties</Link>
             </Nav>
           </Navbar> 
     
@@ -30,8 +34,14 @@ function App() {
           {showMessage && <Message message={message} isPositive={isPositive} />}
 
           <Switch>
+              <Route path="/Users"> <UserList setMessage={setMessage} setIsPositive={setIsPositive} 
+               setShowMessage={setShowMessage} /></Route>
+               
                <Route path="/Customers"> <CustomerList setMessage={setMessage} setIsPositive={setIsPositive} 
-               setShowMessage={setShowMessage} /></Route>               
+               setShowMessage={setShowMessage} /></Route> 
+
+               <Route path="/HolidayProperties"> <HolidayPropertyList setMessage={setMessage} setIsPositive={setIsPositive} 
+               setShowMessage={setShowMessage} /></Route>              
 
           </Switch>
       </Router>
