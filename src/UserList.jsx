@@ -55,12 +55,12 @@ const editUsers = (user) => {
                 {!lisäystila && !muokkaustila &&
                 <table id='userTable'>
                    <thead>
-                     <tr>
-                        <th>Firstname</th>
-                        <th>Lastname</th>
-                        <th>Email</th>
-                        <th>Accesslevel</th>                    
-                     </tr>
+                        <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Email</th>
+                            <th>Accesslevel</th>                    
+                        </tr>
                     </thead> 
                 
                  <tbody>
@@ -72,7 +72,7 @@ const editUsers = (user) => {
                      let valueaccesslevelId = localStorage.getItem('accesslevelId');
                      //console.log(valueaccesslevelId);
                      const lowerCaseName = u.lastname.toLowerCase()
-                        if(valueaccesslevelId == 2){
+                        if(valueaccesslevelId == 1){
                           if (lowerCaseName.indexOf(search) > -1) {
                           return(
                           <tr key={u.userId}>

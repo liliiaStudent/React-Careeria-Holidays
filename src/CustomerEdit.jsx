@@ -75,7 +75,7 @@ return (
     <div id="edit">
       <h2>Customer Edit</h2>
       <form onSubmit={handleSubmit}>
-      <div>
+         <div>
               <input type="text" value={newCustomerId} disabled 
                   />
           </div>
