@@ -21,6 +21,10 @@ const [muokattavaCustomer, setMuokattavaCustomer] = useState(false)
 const [search, setSearch] = useState("")
 
 useEffect( () => {
+    /*const token = localStorage.getItem('token')
+    CustomerServices
+        .setToken(token)*/
+
     CustomerServices.getAll()
     .then(data => {
         setCustomers(data)

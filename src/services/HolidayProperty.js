@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const baseUrl = "https://localhost:5001/api/HolidayProperties"
+const baseUrl = "https://localhost:5001/holidays/HolidayProperties"
 
 const getAll = () => {
     const request = axios.get(baseUrl)

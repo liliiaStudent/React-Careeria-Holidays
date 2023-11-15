@@ -25,12 +25,12 @@ const handleSubmit = (event) => {
     LoginServices.authenticate(userForAuth)
     .then(response => {
       if (response.status === 200) {
-        console.log(response.data.username)
+        
 
       
         // Talletetaan tietoja selaimen local storageen (f12 application välilehti)
         localStorage.setItem("username", response.data.username)
-        localStorage.setItem("accesslevelId", response.data.accesslevelId)
+        localStorage.setItem("accessLevelId", response.data.accessLevelId)
         localStorage.setItem("token", response.data.token)
 
         setLoggedInUser(response.data.username)

@@ -1,11 +1,11 @@
 import './App.css'
 import React, {useState} from 'react'
 import ReservationService from './services/Reservation'
-import Reservation from './services/Reservation'
+//import Reservation from './services/Reservation'
 
 // Props on nimeltään customer
 
-const HolidayProperty = ({reservation, editReservation, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
+const Reservation = ({reservation, editReservation, setIsPositive, setMessage, setShowMessage, reload, reloadNow}) => {
 
     //Komponentin tilan määritys
       
@@ -70,8 +70,8 @@ const deleteReservation =(property) => {
         <div className='reservDiv'>
          <h4 
             onClick={() => setShowDetails(!showDetails)}>
-            {reservation.propertyName} 
-            </h4>      
+                {reservation.propertyName} 
+         </h4>      
 
           {showDetails && <div className='reservationDetails'>
             <h3> {reservation.propertyName} </h3>

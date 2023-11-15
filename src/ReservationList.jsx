@@ -24,6 +24,7 @@ useEffect( () => {
     ReservationServices.getAll()
     .then(data => {
         setReservations(data)
+        //console.log(data)
 })
 
 },[lisäystila, reload, muokkaustila]
@@ -74,7 +75,7 @@ const editReservation = (reservation) => {
                         return(
                   
 
-                <Reservation key={r.propertyId} property={r} reloadNow={reloadNow} reload={reload}
+                <Reservation key={r.reservationId} reservation={r} reloadNow={reloadNow} reload={reload}
                 setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
                 editReservation={editReservation}/>
               

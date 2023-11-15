@@ -2,24 +2,42 @@ import axios from "axios"
 
 const baseUrl ="https://localhost:5001/holidays/Customers"
 
+let token = null
+
+const setToken = newToken => {
+    token = `bearer ${newToken}`
+}
+
 const getAll = () => {
-    const request = axios.get(baseUrl)
+    const config = {
+        headers: { Authorization: token },
+    }
+    const request = axios.get(baseUrl, config)
     return request.then(response => response.data)
 }
 
 const create = newCustomer => {
+    const config = {
+        headers: { Authorization: token },
+    }
     
-    return axios.post(baseUrl, newCustomer)
+    return axios.post(baseUrl, newCustomer, config)
 }
 
 const remove = id => {
     
-    return axios.delete(`${baseUrl}/${id}`)
+    const config = {
+        headers: { Authorization: token },
+    }
+    return axios.delete(`${baseUrl}/${id}`, config)
 }
 
 const update = (object) => {
+    const config = {
+        headers: { Authorization: token },
+    }
     
-    return axios.put(`${baseUrl}/${object.customerId}`, object)
+    return axios.put(`${baseUrl}/${object.customerId}`, object), config
 }
 
 export default { getAll, create, remove, update }
