@@ -12,7 +12,7 @@ const Reservation = ({reservation, editReservation, setIsPositive, setMessage, s
 
 const [showDetails, setShowDetails] = useState(false)
 
-const deleteReservation =(property) => {
+const deleteReservation =(reservation) => {
     let vastaus = window.confirm(`Remove Reservation ${reservation.propertyName} `)
 
     if (vastaus === true) { 
@@ -70,16 +70,17 @@ const deleteReservation =(property) => {
         <div className='reservDiv'>
          <h4 
             onClick={() => setShowDetails(!showDetails)}>
-                {reservation.propertyName} 
+                {reservation.propertyName} {reservation.lastname}
          </h4>      
 
           {showDetails && <div className='reservationDetails'>
-            <h3> {reservation.propertyName} </h3>
+            <h3> {reservation.propertyName} {reservation.lastname} </h3>
             <button className="nappi" onClick={() => deleteReservation(reservation)}>Delete</button>
             <button className="nappi" onClick={() => editReservation(reservation)} >Edit</button>
             <table>
                 <thead>
                     <tr>
+                        <th>ReservationId</th>
                         <th>Property Name</th>
                         <th>PropertyId</th>
                         <th>BookedDateFrom </th>
@@ -96,24 +97,25 @@ const deleteReservation =(property) => {
                         
                     </tr>
                 </thead>
-                <tbody>
+                    <tbody>
                         
+                        <td>{reservation.reservationId}</td> 
                         <td>{reservation.propertyName}</td>                        
                         <td>{reservation.propertyId}</td>  
-                        <td>{reservation.BookedDateFrom}</td>  
-                        <td>{reservation.BookedDateTo}</td>  
-                        <td>{reservation.Firstname}</td>  
-                        <td>{reservation.Lastname}</td>  
-                        <td>{reservation.Email}</td>  
-                        <td>{reservation.PhoneNumber}</td>  
-                        <td>{reservation.Address}</td>  
-                        <td>{reservation.City}</td>  
-                        <td>{reservation.Country}</td>  
-                        <td>{reservation.PostalCode}</td>  
-                        <td>{reservation.Details}</td>  
+                        <td>{reservation.bookedDateFrom}</td>  
+                        <td>{reservation.bookedDateTo}</td>  
+                        <td>{reservation.firstname}</td>  
+                        <td>{reservation.lastname}</td>  
+                        <td>{reservation.email}</td>  
+                        <td>{reservation.phoneNumber}</td>  
+                        <td>{reservation.address}</td>  
+                        <td>{reservation.city}</td>  
+                        <td>{reservation.country}</td>  
+                        <td>{reservation.postalCode}</td>  
+                        <td>{reservation.details}</td>  
                         
                         
-                </tbody>
+                    </tbody>
             </table></div> }  
             
             

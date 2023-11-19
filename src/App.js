@@ -7,7 +7,8 @@ import UserList from './UserList';
 import ReservationList from './ReservationList';
 import Message from './Message';
 import Login from './Login'
-
+import Carousel from 'bootstrap';
+import Item from './Item'
 import  Navbar  from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -54,6 +55,8 @@ const App = () => {
           </Navbar> 
     
           <h1>Holidays</h1>
+
+          
 
           {showMessage && <Message message={message} isPositive={isPositive} />}
 

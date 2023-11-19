@@ -11,6 +11,7 @@ const HolidayPropertyAdd = ({setLisäystila, setIsPositive, setMessage, setShowM
 //Komponentin tilan määritys
 
 
+const [newPropertyId, setNewPropertyId] = useState('')
 const [newPropertyName, setNewPropertyName] = useState('')
 const [newPricePerNight, setNewPricePerNight] = useState('')
 
@@ -27,6 +28,7 @@ const handleSubmit = (event) => {
     event.preventDefault()
     var newHolidayProperty = {
      
+      propertyId: newPropertyId,
       propertyName: newPropertyName,
       pricePerNight: newPricePerNight,
       propertyDetails: newPropertyDetails,
@@ -72,6 +74,10 @@ const handleSubmit = (event) => {
       <div id="addNew">
         <h2>Holiday Property add</h2>
         <form onSubmit={handleSubmit}>
+            <div>
+                <input type="text" value={newPropertyId} placeholder="ID" 
+                    onChange={({ target }) => setNewPropertyId(target.value)} disabled />
+            </div>
         
             <div>
                 <input type="text" value={newPropertyName} placeholder="Property Name"

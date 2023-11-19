@@ -79,6 +79,7 @@ const deleteCustomer =(customer) => {
             <table>
                 <thead>
                     <tr>
+                        <th>CustomerId</th>
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Address</th>
@@ -89,6 +90,7 @@ const deleteCustomer =(customer) => {
                 </thead>
                 <tbody>
                         
+                        <td>{customer.customerId}</td>
                         <td>{customer.email}</td>
                         <td>{customer.phoneNumber}</td>
                         <td>{customer.address}</td>

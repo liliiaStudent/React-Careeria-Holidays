@@ -1,7 +1,7 @@
 import './App.css'
 import React, {useState} from 'react'
 import ReservationServices from './services/Reservation'
-import Reservation from './services/Reservation'
+
 
 
 
@@ -54,7 +54,7 @@ const handleSubmit = (event) => {
       
      
     }
-    console.log(Reservation)
+    console.log(newReservation)
     
     ReservationServices.update(newReservation)
     .then(response => {

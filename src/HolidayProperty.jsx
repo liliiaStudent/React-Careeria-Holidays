@@ -79,6 +79,7 @@ const deleteHolidayProperty =(property) => {
             <table>
                 <thead>
                     <tr>
+                        <th>Property Id</th>
                         <th>Property Name</th>
                         <th>Price per Night</th>
                         <th>Property Details</th>
@@ -87,12 +88,13 @@ const deleteHolidayProperty =(property) => {
                     </tr>
                 </thead>
                 <tbody>
-                        
+                    <tr>                        
+                        <td>{property.propertyId}</td> 
                         <td>{property.propertyName}</td>                        
                         <td>{property.pricePerNight}</td>
                         <td>{property.propertyDetails}</td>
                         <td>{property.imageLink}</td>
-                        
+                    </tr>   
                         
                 </tbody>
             </table></div> }  

@@ -11,6 +11,7 @@ const CustomerAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}
 //Komponentin tilan määritys
 
 
+const [newCustomerId, setNewCustomerId] = useState('')
 const [newFirstname, setNewFirstname] = useState('')
 const [newLastname, setNewLastname] = useState('')
 
@@ -33,6 +34,7 @@ const handleSubmit = (event) => {
     event.preventDefault()
     var newCustomer = {
       
+      customerId: newCustomerId,
       firstname: newFirstname,
       lastname: newLastname,
       email: newEmail,
@@ -82,6 +84,10 @@ const handleSubmit = (event) => {
       <div id="addNew">
         <h2>Customer add</h2>
         <form onSubmit={handleSubmit}>
+            <div>
+                <input type="text" value={newCustomerId} placeholder="ID" 
+                    onChange={({ target }) => setNewCustomerId(target.value)} disabled />
+            </div>
         
             <div>
                 <input type="text" value={newFirstname} placeholder="Firstname"

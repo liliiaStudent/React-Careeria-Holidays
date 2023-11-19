@@ -3,25 +3,20 @@ import React, {useState} from 'react'
 import UserServices from './services/User'
 import md5 from 'md5'
 
-
-// Propsi otettu vastaan suoran nimellä
-
-const UserAdd = ({setLisäystila, setIsPositive, setMessage, setShowMessage}) => {
+const UserEdit = ({setMuokkaustila, setIsPositive, setMessage, setShowMessage, muokattavaUser}) => {
 
 //Komponentin tilan määritys
-
-const [newUserId, setNewUserId] = useState('')
-const [newFirstname, setNewFirstname] = useState('')
-const [newLastname, setNewLastname] = useState('')
-const [newEmail, setNewEmail] = useState('')
-const [newAccesslevelId, setNewAccesslevelId] = useState('2')
-const [newUsername, setNewUsername] = useState('')
-const [newPassword, setNewPassword] = useState('')
-const [confirmPassword, setConfirmPassword] = useState('');
+const [newUserId, setNewUserId] = useState(muokattavaUser.userId)
+const [newFirstname, setNewFirstname] = useState(muokattavaUser.firstname)
+const [newLastname, setNewLastname] = useState(muokattavaUser.lastname)
+const [newEmail, setNewEmail] = useState(muokattavaUser.email)
+const [newAccesslevelId, setNewAccesslevelId] = useState(muokattavaUser.accesslevelId)
+const [newUsername, setNewUsername] = useState(muokattavaUser.username)
+const [newPassword, setNewPassword] = useState(muokattavaUser.password)
+const [confirmPassword, setConfirmPassword] = useState(muokattavaUser.confirmPassword);
 
 
 //onSubmit tapahtumankäsittelijä funktio
-
 
 const handleSubmit = (event) => {
     event.preventDefault()
@@ -37,17 +32,18 @@ const handleSubmit = (event) => {
     }
     console.log(newUser)
 
-    UserServices.create(newUser)
+    UserServices.update(newUser)
     .then(response => {
       if (response.status === 200) {
-        setMessage(`Added new User: ${newUser.username}`)
+        setMessage("Edited User: " + newUser.username)
         setIsPositive(true)
         setShowMessage(true)
+
         setTimeout(() => {
-          setLisäystila(false)
+          setShowMessage(false)
          }, 5000)
 
-        setLisäystila(false)
+        setMuokkaustila(false)
       }
        
            })
@@ -61,13 +57,14 @@ const handleSubmit = (event) => {
       }, 6000)
       
 
-     
+     /* 
+       */
       })
 
 }  
-    return (
-      <div id="addNew">
-        <h2>User add</h2>
+return (
+    <div id="edit">
+        <h2>User edit</h2>
         <form onSubmit={handleSubmit}>
             
             <div>
@@ -115,7 +112,7 @@ const handleSubmit = (event) => {
             </div>
            
              <input type='submit' value='save' disabled={newPassword !== confirmPassword} />
-             <input type='button' value='back' onClick={() => setLisäystila(false)} />     
+             <input type='button' value='back' onClick={() => setMuokkaustila(false)} />     
             
            
         </form>
@@ -126,4 +123,4 @@ const handleSubmit = (event) => {
     )
 }
 
-export default UserAdd
+export default UserEdit

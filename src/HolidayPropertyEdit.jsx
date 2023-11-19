@@ -72,8 +72,9 @@ return (
     <div id="edit">
       <h2>Holiday Property edit</h2>
       <form onSubmit={handleSubmit}>
-      <div>
-              <input type="text" value={newPropertyId} disabled  />
+          <div>
+                <input type="text" value={newPropertyId} placeholder="ID" 
+                    onChange={({ target }) => setNewPropertyId(target.value)} disabled />
           </div>
           <div>
               <input type="text" value={newPropertyName} placeholder="Property Name"

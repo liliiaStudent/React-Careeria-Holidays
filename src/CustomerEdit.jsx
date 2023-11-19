@@ -1,7 +1,7 @@
 import './App.css'
 import React, {useState} from 'react'
 import CustomerServices from './services/Customer'
-import Customer from './services/Customer'
+
 
 
 // Propsi otettu vastaan suoran nimellä
@@ -75,9 +75,9 @@ return (
     <div id="edit">
       <h2>Customer Edit</h2>
       <form onSubmit={handleSubmit}>
-         <div>
-              <input type="text" value={newCustomerId} disabled 
-                  />
+          <div>
+                <input type="text" value={newCustomerId} placeholder="ID" 
+                    onChange={({ target }) => setNewCustomerId(target.value)} disabled />
           </div>
           <div>
               <input type="text" value={newFirstname} placeholder="Firstname"
