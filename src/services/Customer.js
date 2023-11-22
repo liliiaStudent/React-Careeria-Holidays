@@ -37,7 +37,7 @@ const update = (object) => {
         headers: { Authorization: token },
     }
     
-    return axios.put(`${baseUrl}/${object.customerId}`, object), config
+    return axios.put(`${baseUrl}/${object.customerId}`, object, config)
 }
 
 export default { getAll, create, remove, update }

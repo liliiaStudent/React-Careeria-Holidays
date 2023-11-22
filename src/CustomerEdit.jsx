@@ -41,6 +41,8 @@ const handleSubmit = (event) => {
       
      
     }
+    console.log(newCustomer)
+    
     CustomerServices.update(newCustomer)
     .then(response => {
       if (response.status === 200) {
@@ -77,7 +79,7 @@ return (
       <form onSubmit={handleSubmit}>
           <div>
                 <input type="text" value={newCustomerId} placeholder="ID" 
-                    onChange={({ target }) => setNewCustomerId(target.value)} disabled />
+                    onChange={({ target }) => setNewCustomerId(target.value)} required />
           </div>
           <div>
               <input type="text" value={newFirstname} placeholder="Firstname"

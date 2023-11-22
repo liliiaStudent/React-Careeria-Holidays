@@ -98,21 +98,23 @@ const deleteReservation =(reservation) => {
                     </tr>
                 </thead>
                     <tbody>
+                        <tr>
                         
-                        <td>{reservation.reservationId}</td> 
-                        <td>{reservation.propertyName}</td>                        
-                        <td>{reservation.propertyId}</td>  
-                        <td>{reservation.bookedDateFrom}</td>  
-                        <td>{reservation.bookedDateTo}</td>  
-                        <td>{reservation.firstname}</td>  
-                        <td>{reservation.lastname}</td>  
-                        <td>{reservation.email}</td>  
-                        <td>{reservation.phoneNumber}</td>  
-                        <td>{reservation.address}</td>  
-                        <td>{reservation.city}</td>  
-                        <td>{reservation.country}</td>  
-                        <td>{reservation.postalCode}</td>  
-                        <td>{reservation.details}</td>  
+                            <td>{reservation.reservationId}</td> 
+                            <td>{reservation.propertyName}</td>                        
+                            <td>{reservation.propertyId}</td>  
+                            <td>{reservation.bookedDateFrom}</td>  
+                            <td>{reservation.bookedDateTo}</td>  
+                            <td>{reservation.firstname}</td>  
+                            <td>{reservation.lastname}</td>  
+                            <td>{reservation.email}</td>  
+                            <td>{reservation.phoneNumber}</td>  
+                            <td>{reservation.address}</td>  
+                            <td>{reservation.city}</td>  
+                            <td>{reservation.country}</td>  
+                            <td>{reservation.postalCode}</td>  
+                            <td>{reservation.details}</td>  
+                        </tr>
                         
                         
                     </tbody>

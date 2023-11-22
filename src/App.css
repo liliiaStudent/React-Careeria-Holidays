@@ -36,7 +36,7 @@
 .customerDetails {
   background-color: rgb(250, 182, 231);
   border-style: solid;
-  width: 50%;
+  width: 100%;
   margin: auto;
   margin-bottom: 50px;
   border-radius: 30px;
@@ -48,7 +48,7 @@
 .propertyDetails {
   background-color: rgb(250, 182, 231);
   border-style: solid;
-  width: 50%;
+  width: 70%;
   margin: auto;
   margin-bottom: 50px;
   border-radius: 30px;
@@ -60,7 +60,7 @@
 .reservationDetails{
 background-color: rgb(250, 182, 231);
 border-style: solid;
-width: 150%;
+width: 180%;
 margin: auto;
 margin-bottom: 50px;
 border-radius: 30px;
@@ -68,6 +68,18 @@ flex-direction: column;
 align-items: center;
 padding-left: 10%;
 padding-right: 10%;
+}
+.userDetails {
+  background-color: rgb(250, 182, 231);
+  border-style: solid;
+  width: 120%;
+  margin: auto;
+  margin-bottom: 50px;
+  border-radius: 30px;
+  flex-direction: column;
+  align-items: center;
+  padding-left: 10%;
+  padding-right: 10%;
 }
 .nappi {
   border-radius: 10px;

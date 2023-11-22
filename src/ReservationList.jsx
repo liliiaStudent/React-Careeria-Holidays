@@ -61,8 +61,7 @@ const editReservation = (reservation) => {
                 {muokkaustila && <ReservationEdit setMuokkaustila={setMuokkaustila} 
                   setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
                   muokattavaReservation={muokattavaReservation}
-
-/>}
+                  />}
         
 
                  

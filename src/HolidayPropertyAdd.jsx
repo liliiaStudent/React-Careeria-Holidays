@@ -76,7 +76,7 @@ const handleSubmit = (event) => {
         <form onSubmit={handleSubmit}>
             <div>
                 <input type="text" value={newPropertyId} placeholder="ID" 
-                    onChange={({ target }) => setNewPropertyId(target.value)} disabled />
+                    onChange={({ target }) => setNewPropertyId(target.value)} required />
             </div>
         
             <div>

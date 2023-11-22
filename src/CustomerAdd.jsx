@@ -86,7 +86,7 @@ const handleSubmit = (event) => {
         <form onSubmit={handleSubmit}>
             <div>
                 <input type="text" value={newCustomerId} placeholder="ID" 
-                    onChange={({ target }) => setNewCustomerId(target.value)} disabled />
+                    onChange={({ target }) => setNewCustomerId(target.value)} required />
             </div>
         
             <div>

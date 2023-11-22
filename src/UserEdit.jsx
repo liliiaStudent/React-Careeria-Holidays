@@ -69,7 +69,7 @@ return (
             
             <div>
                 <input type="text" value={newUserId} placeholder="ID" 
-                    onChange={({ target }) => setNewUserId(target.value)} disabled />
+                    onChange={({ target }) => setNewUserId(target.value)} required />
             </div>
             <div>
                 <input type="text" value={newFirstname} placeholder="First Name" 
@@ -81,15 +81,15 @@ return (
             </div>
             <div>
                 <input type="emai" value={newEmail} placeholder="Email"
-                    onChange={({ target }) => setNewEmail(target.value)} />
+                    onChange={({ target }) => setNewEmail(target.value)} required />
             </div>
             <div>
                 <input type="number" value={newAccesslevelId} placeholder="Access level"
-                    onChange={({ target }) => setNewAccesslevelId(target.value)} />
+                    onChange={({ target }) => setNewAccesslevelId(target.value)} required />
             </div>
             <div>
                 <input type="text" value={newUsername} placeholder="User Name"
-                    onChange={({ target }) => setNewUsername(target.value)} />
+                    onChange={({ target }) => setNewUsername(target.value)} required/>
             </div>
             <div>
                 <input 

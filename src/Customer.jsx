@@ -67,13 +67,12 @@ const deleteCustomer =(customer) => {
     return (
     
         <div className='custDiv'>
-         <h4 
-            onClick={() => setShowDetails(!showDetails)}>
-            {customer.firstname} {customer.lastname}
+            <h4 
+                onClick={() => setShowDetails(!showDetails)}>
+                {customer.firstname} {customer.lastname}
             </h4>      
 
-          {showDetails && <div className='customerDetails'>
-            <h3> {customer.firstname} {customer.lastname}</h3>
+            {showDetails && <div className='customerDetails'>
             <button className="nappi" onClick={() => deleteCustomer(customer)}>Delete</button>
             <button className="nappi" onClick={() => editCustomer(customer)} >Edit</button>
             <table>
@@ -88,8 +87,8 @@ const deleteCustomer =(customer) => {
                         <th>Postal Code</th>
                     </tr>
                 </thead>
-                <tbody>
-                        
+                <tbody> 
+                    <tr>                       
                         <td>{customer.customerId}</td>
                         <td>{customer.email}</td>
                         <td>{customer.phoneNumber}</td>
@@ -97,12 +96,9 @@ const deleteCustomer =(customer) => {
                         <td>{customer.city}</td>
                         <td>{customer.country}</td>
                         <td>{customer.postalCode}</td>
+                    </tr>
                 </tbody>
             </table></div> }  
-            
-            
-                 
-       
         </div>  
      )
     } 

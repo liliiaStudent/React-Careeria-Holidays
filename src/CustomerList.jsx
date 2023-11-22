@@ -6,9 +6,15 @@ import CustomerAdd from './CustomerAdd'
 import CustomerEdit from './CustomerEdit'
 
 
+
+
+
+
 // Propsi otettu vastaan suoran nimellä
 
 const CustomerList = ({setIsPositive, setShowMessage, setMessage}) => {
+    
+    console.log("CustomerList component is rendering");
 
     //Komponentin tilan määritys
       
@@ -21,17 +27,26 @@ const [muokattavaCustomer, setMuokattavaCustomer] = useState(false)
 const [search, setSearch] = useState("")
 
 useEffect( () => {
+    console.log("useEffect is running")
     /*const token = localStorage.getItem('token')
     CustomerServices
         .setToken(token)*/
 
-    CustomerServices.getAll()
-    .then(data => {
-        setCustomers(data)
-})
+        CustomerServices.getAll()
+        .then(data => {
+          setCustomers(data);
+        })
+        .catch(error => {
+          setMessage(error);
+          setIsPositive(false);
+          setShowMessage(true);
+        });
+     
 
-},[lisäystila, reload, muokkaustila]
-)
+},[lisäystila, reload, muokkaustila]// <-- Ensure all dependencies are listed here
+
+);
+console.log("CustomerList");
 //Hakukentän onChange tapahtumankäsittelijä
 const handleSearchInputChange = (event) => {
     setShowCustomers(true)

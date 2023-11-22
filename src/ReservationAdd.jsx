@@ -92,7 +92,8 @@ const handleSubmit = (event) => {
         <form onSubmit={handleSubmit}>
         
             <div>
-              <input type="text" value={newReservationId} disabled  />
+              <input type="text" value={newReservationId} placeholder="Reservation Id"
+                    onChange={({ target }) => setNewReservationId(target.value)} required  />
           </div>
             <div>
                 <input type="text" value={newPropertyName} placeholder="Property Name"

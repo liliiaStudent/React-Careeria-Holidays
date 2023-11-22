@@ -29,11 +29,10 @@ const handleSubmit = (event) => {
       userId: newUserId,
       firstname: newFirstname,
       lastname: newLastname,
-      email: newEmail,
-      accesslevelId: parseInt(newAccesslevelId),
+      email: newEmail,      
       username: newUsername,
-      password: md5(newPassword) //salataan md5 kirjaston metodilla
-      
+      password: md5(newPassword), //salataan md5 kirjaston metodilla
+      accesslevelId: parseInt(newAccesslevelId),
     }
     console.log(newUser)
 
@@ -72,7 +71,7 @@ const handleSubmit = (event) => {
             
             <div>
                 <input type="text" value={newUserId} placeholder="ID" 
-                    onChange={({ target }) => setNewUserId(target.value)} disabled />
+                    onChange={({ target }) => setNewUserId(target.value)} required />
             </div>
             <div>
                 <input type="text" value={newFirstname} placeholder="First Name" 

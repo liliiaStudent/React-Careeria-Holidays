@@ -3,7 +3,7 @@ import React, {useState, useEffect} from 'react'
 import UserServices from './services/User'
 import UserAdd from './UserAdd'
 import UserEdit from './UserEdit'
-
+import User from './services/User'
 
 
 // Propsi otettu vastaan suoran nimellä
@@ -11,7 +11,8 @@ import UserEdit from './UserEdit'
 const UserList = ({setIsPositive, setShowMessage, setMessage}) => {
 
 //Komponentin tilan määritys
-const User = ({setIsPositive, setMessage, setShowMessage, reload, reloadNow}) 
+const [showDetails, setShowDetails] = useState(false)
+
 const [users, setUsers] = useState([])
 const [lisäystila, setLisäystila] = useState(false)
 const [muokkaustila, setMuokkaustila] = useState(false)
@@ -32,6 +33,7 @@ useEffect( () => {
   const handleSearchInputChange = (event) => {    
     setSearch(event.target.value.toLowerCase())
 }
+
 const deleteUser =(users) => {
   let vastaus = window.confirm(`Remove User ${users.userId} `)
 
@@ -81,14 +83,17 @@ const deleteUser =(users) => {
           5000
           )
       }
+
+
   }
-const editUser = (users) => {
-  setMuokattavaUser(users)
+
+const editUser = (user) => {
+  setMuokattavaUser(user)
   setMuokkaustila(true)
 
 }
     return (
-      <>
+      <div>
         
         <h1><nobr>Users</nobr>   
 
@@ -100,83 +105,72 @@ const editUser = (users) => {
 
                 {!lisäystila && !muokkaustila &&
                 <input placeholder="Search by Last Name" value={search} onChange={handleSearchInputChange} />
-                }              
+                }
+
+                {muokkaustila && <UserEdit setMuokkaustila={setMuokkaustila} 
+                  setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
+                  muokattavaUser={muokattavaUser} /> }
+              
 
                 {!lisäystila && !muokkaustila &&
                 <table id='userTable'>
-                   <thead>
-                        <tr>
-                            <th>UserId</th>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Email</th>
-                            <th>Access Level Id</th>  
-                            <th>Password</th>                  
-                        </tr>
-                    </thead> 
-                
-                 <tbody>
-                
-               
-                             
-                    { users  && users.map(u => 
-                     {
-                     let valueaccesslevelId = localStorage.getItem('accessLevelId');
-                     //console.log(valueaccesslevelId);
-                     const lowerCaseName = u.lastname.toLowerCase()
-                        if(valueaccesslevelId = 1){
-                          if (lowerCaseName.indexOf(search) > -1) {
-                          return(
-                          <tr key={u.userId}>
-                              <td>{u.userId}</td>
-                              <td>{u.firstname}</td>
-                              <td>{u.lastname}</td>
-                              <td>{u.email}</td>
-                              <td>{u.accessLevelId}</td>
-                              <td>{u.password}</td>
-                          </tr> 
-                                       
-                  
-                              )
-                          }
+                  <tbody>      
+                    { users  && users.map(u =>
+                    
+                      {
+                        let valueaccesslevelId = localStorage.getItem('accessLevelId');
+                        //console.log(valueaccesslevelId);
+                        const lowerCaseName = u.lastname.toLowerCase()
+                          if(valueaccesslevelId === "1"){
+                            if (lowerCaseName.indexOf(search) > -1) {
+                              return(
+                                  <div className='userDiv'>
+                                  <h4
+                                    onClick={() => setShowDetails(!showDetails)}>
+                                    {u.firstname} {u.lastname}
+                                  </h4>
+                                  
+
+                                  {showDetails && <div className='userDetails'>
+                                  
+                                    <button className="nappi" onClick={() => deleteUser(u)}>Delete</button>
+                                    <button className="nappi" onClick={() => editUser(u)}>Edit</button>                                    
+                                    <table>
+                                      <thead>
+                                        <tr>
+                                          <th>UserId</th>
+                                          <th>Firstname</th>
+                                          <th>Lastname</th>
+                                          <th>Email</th>
+                                          <th>Username</th>
+                                          <th>Password</th>
+                                          <th>Access Level Id</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr key={u.userId}>
+                                          <td>{u.userId}</td>
+                                          <td>{u.firstname}</td>
+                                          <td>{u.lastname}</td>
+                                          <td>{u.email}</td>
+                                          <td>{u.username}</td>
+                                          <td>{u.password}</td>
+                                          <td>{u.accessLevelId}</td>
+                                        </tr>
+                                      </tbody>
+                                    </table></div>}
+                                </div>
+                                
+                              )                            
+                            }
+                          }                        
                         }
-                        
-                     }
-                         ) 
+                      )            
                     }
-                  muokkaustila && <UserEdit setMuokkaustila={setMuokkaustila} 
-                  setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                  muokattavaUser={muokattavaUser}
-
-/>
-        
-
-                 
-         {
-             !lisäystila && !muokkaustila  && users && users.map(u =>  
-                
-                {
-                    const lowerCaseName = u.username.toLowerCase()
-                    if (lowerCaseName.indexOf(search) > -1) {
-                        return(
-                  
-
-                <User key={u.userId} users={u} reloadNow={reloadNow} reload={reload}
-                setIsPositive={setIsPositive} setMessage={setMessage} setShowMessage={setShowMessage}
-                editUser={editUser}/>
-              
-                ) 
-                        }
-                    }
-                 )     
-                                          
-
-            
-                   }
-              </tbody>
+                  </tbody>
                </table>
             }
-      </>
+      </div>
     )
 }
 
