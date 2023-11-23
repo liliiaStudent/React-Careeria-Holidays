@@ -123,3 +123,10 @@ padding-right: 10%;
     transform: rotate(360deg);
   }
 }
+div.showAllUsers {
+  vertical-align: middle;
+}
+
+.userTable {
+  margin: auto;
+}
